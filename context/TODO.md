@@ -96,10 +96,10 @@ The primary play flow and expected error cases work end to end, automated tests 
 
 ### Tasks
 
-- [ ] Select a cloud host that supports a Python Flask web service.
-- [ ] Add the host-required startup command and production server dependency/configuration.
-- [ ] Configure the service to install dependencies and serve the Flask app and static assets.
-- [ ] Keep secrets and environment-specific settings out of source control.
+- [x] Select Render, which supports a Python Flask web service.
+- [x] Add the production Gunicorn startup command and dependency configuration.
+- [x] Configure the service to install dependencies and serve the Flask app and static assets.
+- [x] Keep secrets and environment-specific settings out of source control; no secrets are needed for this app.
 - [ ] Deploy the application and confirm the public URL serves the browser client.
 - [ ] Verify game creation, guessing, win/loss behavior, and API error responses against the deployed service.
 - [ ] Document deployment configuration, launch steps, and the public URL in the README.

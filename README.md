@@ -1,4 +1,4 @@
-# Hangman Game Engine
+# Hangman Web Game
 
 This project is a browser-based Hangman game. Its Python game engine remains
 independent of Flask and the browser; Flask exposes the engine through a JSON
@@ -57,3 +57,17 @@ your keyboard to guess. Start another game at any time with the new-game button.
 Responses include the masked `pattern`, guessed and incorrect letters,
 remaining guesses, and status. The answer is included only after the game ends.
 Invalid requests return a JSON `error` and an appropriate 4xx status code.
+
+## Deploy to Render
+
+The repository includes a Render Blueprint in `render.yaml` and pins the
+service to Python 3.13 through `.python-version`. To create the web service:
+
+1. Connect the `kayzute/hangman-app` GitHub repository to Render.
+2. Create a Blueprint instance from the repository's `main` branch.
+3. Apply the Blueprint named `hangman-app-web`.
+
+Render installs `requirements.txt` and starts the app with Gunicorn. The
+Blueprint uses one worker because active games are stored in process memory;
+restarts and redeploys clear active games. Pushes to the linked `main` branch
+can then trigger new deploys.
