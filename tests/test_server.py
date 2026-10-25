@@ -63,6 +63,35 @@ class HangmanApiTests(unittest.TestCase):
         self.assertEqual(self.client.post("/api/games").status_code, 400)
         self.assertEqual(self.client.post("/api/games/missing/guess", json={"letter": "a"}).status_code, 404)
 
+    def test_malformed_json_and_extra_guess_fields_are_rejected(self):
+        game_id = self.start_game()["game_id"]
+        malformed = self.client.post(
+            f"/api/games/{game_id}/guess",
+            data="not-json",
+            content_type="application/json",
+        )
+        self.assertEqual(malformed.status_code, 400)
+        extra = self.client.post(
+            f"/api/games/{game_id}/guess",
+            json={"letter": "a", "word": "cat"},
+        )
+        self.assertEqual(extra.status_code, 400)
+
+    def test_loss_reveals_answer_and_rejects_guesses_after_game_end(self):
+        game_id = self.start_game()["game_id"]
+        for letter in "bdefgh":
+            response = self.client.post(f"/api/games/{game_id}/guess", json={"letter": letter})
+            self.assertEqual(response.status_code, 200)
+        state = response.get_json()
+        self.assertEqual(state["status"], "lost")
+        self.assertEqual(state["remaining_guesses"], 0)
+        self.assertEqual(state["word"], "cat")
+        self.assertEqual(self.client.get(f"/api/games/{game_id}").get_json()["word"], "cat")
+        self.assertEqual(
+            self.client.post(f"/api/games/{game_id}/guess", json={"letter": "a"}).status_code,
+            409,
+        )
+
     def test_guess_input_is_validated_and_duplicates_rejected(self):
         game_id = self.start_game()["game_id"]
         self.assertEqual(self.client.post(f"/api/games/{game_id}/guess", json={"letter": "ab"}).status_code, 400)

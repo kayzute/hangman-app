@@ -78,15 +78,15 @@ A player can start and finish a game in a browser. The interface reflects server
 
 ### Tasks
 
-- [ ] Run and maintain unit tests for the game engine and word management.
-- [ ] Add API tests for game creation, state retrieval, guesses, validation errors, and unknown IDs.
-- [ ] Test correct guesses, incorrect guesses, duplicate guesses, wins, losses, and attempts after game end.
-- [ ] Test that the answer is absent from active-game API responses and available after completion.
-- [ ] Test the browser-to-API flow for creating a game and submitting guesses.
-- [ ] Exercise invalid input and server/network errors in the browser.
-- [ ] Check layout and keyboard usability at common desktop and mobile viewport sizes.
-- [ ] Fix discovered defects and rerun the relevant tests and manual checks.
-- [ ] Record the verification steps and any known limitations in the README.
+- [x] Run and maintain unit tests for the game engine and word management.
+- [x] Add API tests for game creation, state retrieval, guesses, validation errors, and unknown IDs.
+- [x] Test correct guesses, incorrect guesses, duplicate guesses, wins, losses, and attempts after game end.
+- [x] Test that the answer is absent from active-game API responses and available after completion.
+- [x] Test the browser-to-API flow for creating a game and submitting guesses.
+- [x] Exercise invalid input and server/network error handling.
+- [x] Check layout and keyboard usability at common desktop and mobile viewport sizes.
+- [x] Fix discovered defects and rerun the relevant tests and manual checks.
+- [x] Record the verification steps and any known limitations in the README.
 
 ### Completion Criteria
 

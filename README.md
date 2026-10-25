@@ -31,6 +31,13 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 ```
 
+The current suite covers the game engine, word lists, REST API validation and
+error statuses, win/loss behavior, answer disclosure, and static browser
+delivery. The browser play flow was also checked manually: starting a game,
+guessing with both the on-screen and physical keyboards, and restarting. The
+responsive stacked layout was inspected at a narrow browser width; the project
+owner also confirmed the game works in their browser.
+
 ## Run the server
 
 ```bash
