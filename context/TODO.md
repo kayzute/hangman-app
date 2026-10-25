@@ -39,7 +39,7 @@ A game can be created and played entirely through Python without Flask or a brow
 ### Tasks
 
 - [x] Add the Flask application and dependency configuration.
-- [ ] Serve the browser application from the Flask app (complete with Phase 3).
+- [x] Serve the browser application from the Flask app.
 - [x] Store active games in memory and assign each a unique game ID.
 - [x] Implement `POST /api/games` to create a game for the requested difficulty.
 - [x] Implement `GET /api/games/{game_id}` to return the current client-safe state.
@@ -58,17 +58,17 @@ A complete game can be created and played using HTTP requests alone. The API ret
 
 ### Tasks
 
-- [ ] Create `static/index.html`, `static/style.css`, and `static/app.js`.
-- [ ] Provide Easy, Medium, and Hard difficulty selection.
-- [ ] Add a New Game/restart action.
-- [ ] Use `fetch()` to create games and submit guesses through the REST API.
-- [ ] Display the masked word, guessed letters, incorrect letters, and remaining guesses.
-- [ ] Provide an on-screen A–Z keyboard and disable letters already guessed or input after game end.
-- [ ] Draw and update the hangman graphic as incorrect guesses accumulate.
-- [ ] Show clear win/loss feedback and the answer after the game ends.
-- [ ] Show useful feedback when API requests fail.
-- [ ] Make the interface usable on desktop and mobile screen sizes.
-- [ ] Keep all game rules and the secret word on the server; browser code should only present API state and collect input.
+- [x] Create `static/index.html`, `static/style.css`, and `static/app.js`.
+- [x] Provide Easy, Medium, and Hard difficulty selection.
+- [x] Add a New Game/restart action.
+- [x] Use `fetch()` to create games and submit guesses through the REST API.
+- [x] Display the masked word, guessed letters, incorrect letters, and remaining guesses.
+- [x] Provide an on-screen A–Z keyboard and disable letters already guessed or input after game end.
+- [x] Draw and update the hangman graphic as incorrect guesses accumulate.
+- [x] Show clear win/loss feedback and the answer after the game ends.
+- [x] Show useful feedback when API requests fail.
+- [x] Make the interface usable on desktop and mobile screen sizes.
+- [x] Keep all game rules and the secret word on the server; browser code should only present API state and collect input.
 
 ### Completion Criteria
 

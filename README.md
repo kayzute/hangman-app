@@ -38,7 +38,8 @@ python server.py
 ```
 
 The server listens at `http://127.0.0.1:5000`. The browser game is served at
-`/` once the browser client is implemented.
+`/`. Select a difficulty, start a new game, then use the on-screen alphabet or
+your keyboard to guess. Start another game at any time with the new-game button.
 
 ## REST API
 

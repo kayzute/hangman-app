@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f5f0">
+    <title>Hangman — Word Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Hangman home">
+          <span class="brand-mark" aria-hidden="true">H</span>
+          <span>little word game</span>
+        </a>
+        <span class="top-note"><span class="status-dot" aria-hidden="true"></span> A quiet moment for your brain</span>
+      </header>
+
+      <section class="game-card" aria-labelledby="page-title">
+        <div class="intro-row">
+          <div>
+            <p class="eyebrow">THE CLASSIC, WITH A LITTLE TWIST</p>
+            <h1 id="page-title">Find the word<span class="title-period">.</span></h1>
+            <p class="subtitle">Pick letters and see what you can uncover.</p>
+          </div>
+          <div class="game-controls">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty" name="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <button id="new-game" class="new-game-button" type="button">New game <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+
+        <div class="game-area">
+          <section class="drawing-panel" aria-label="Hangman drawing">
+            <div class="drawing-label"><span>YOUR PROGRESS</span><span id="life-count">6 / 6</span></div>
+            <svg class="hangman" viewBox="0 0 260 240" role="img" aria-labelledby="drawing-title drawing-description">
+              <title id="drawing-title">Hangman progress drawing</title>
+              <desc id="drawing-description">The drawing gains one part for each incorrect guess.</desc>
+              <path class="gallows-line" d="M42 212h176M76 212V30h112v24" />
+              <circle class="person-part" data-part="1" cx="188" cy="76" r="22" />
+              <path class="person-part" data-part="2" d="M188 98v54" />
+              <path class="person-part" data-part="3" d="m188 112-31 22" />
+              <path class="person-part" data-part="4" d="m188 112 31 22" />
+              <path class="person-part" data-part="5" d="m188 151-27 38" />
+              <path class="person-part" data-part="6" d="m188 151 27 38" />
+              <circle class="cheek-dot" cx="180" cy="75" r="2" />
+              <circle class="cheek-dot" cx="196" cy="75" r="2" />
+              <path class="smile" d="M181 85q7 7 14 0" />
+            </svg>
+            <p class="drawing-caption" id="drawing-caption">Six chances. Take your time.</p>
+          </section>
+
+          <section class="play-panel" aria-label="Game controls and word">
+            <div class="word-heading"><span>THE MYSTERY WORD</span><span class="word-length" id="word-length">— letters</span></div>
+            <div id="word-pattern" class="word-pattern" aria-label="Hidden word" aria-live="polite">_ _ _ _ _</div>
+            <div class="message" id="game-message" role="status" aria-live="polite">Choose a difficulty, then start a new game.</div>
+            <div class="guesses-row">
+              <div class="guess-group"><span class="mini-label">GUESSED</span><span id="guessed-letters" class="guess-values">—</span></div>
+              <div class="guess-group wrong-group"><span class="mini-label">MISSED</span><span id="incorrect-letters" class="guess-values">—</span></div>
+            </div>
+            <div class="keyboard-heading"><span>CHOOSE A LETTER</span><span class="keyboard-hint">or use your keyboard</span></div>
+            <div class="keyboard" id="keyboard" aria-label="Letter keyboard"></div>
+          </section>
+        </div>
+
+        <footer class="card-footer"><span>One letter at a time.</span><span id="footer-status">Ready when you are.</span></footer>
+      </section>
+      <p class="page-footer">Made for curious minds <span aria-hidden="true">✳</span></p>
+    </main>
+  </body>
+</html>

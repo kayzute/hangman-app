@@ -20,6 +20,17 @@ class HangmanApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         return response.get_json()
 
+    def test_browser_page_and_assets_are_served(self):
+        page = self.client.get("/")
+        self.assertEqual(page.status_code, 200)
+        self.assertIn(b"Find the word", page.data)
+        page.close()
+        for path in ("/static/style.css", "/static/app.js"):
+            with self.subTest(path=path):
+                response = self.client.get(path)
+                self.assertEqual(response.status_code, 200)
+                response.close()
+
     def test_create_game_returns_client_safe_initial_state(self):
         state = self.start_game()
         self.assertTrue(state["game_id"])
