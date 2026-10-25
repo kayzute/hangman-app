@@ -38,17 +38,17 @@ A game can be created and played entirely through Python without Flask or a brow
 
 ### Tasks
 
-- [ ] Add the Flask application and dependency configuration.
-- [ ] Serve the browser application from the Flask app.
-- [ ] Store active games in memory and assign each a unique game ID.
-- [ ] Implement `POST /api/games` to create a game for the requested difficulty.
-- [ ] Implement `GET /api/games/{game_id}` to return the current client-safe state.
-- [ ] Implement `POST /api/games/{game_id}/guess` to process a letter guess.
-- [ ] Return consistent JSON responses for successful requests and errors.
-- [ ] Use appropriate HTTP status codes for malformed requests, invalid input, and unknown game IDs.
-- [ ] Ensure active-game responses never include the hidden word.
-- [ ] Keep the server authoritative; do not accept a client-supplied answer or game outcome.
-- [ ] Document request and response shapes in the README.
+- [x] Add the Flask application and dependency configuration.
+- [ ] Serve the browser application from the Flask app (complete with Phase 3).
+- [x] Store active games in memory and assign each a unique game ID.
+- [x] Implement `POST /api/games` to create a game for the requested difficulty.
+- [x] Implement `GET /api/games/{game_id}` to return the current client-safe state.
+- [x] Implement `POST /api/games/{game_id}/guess` to process a letter guess.
+- [x] Return consistent JSON responses for successful requests and errors.
+- [x] Use appropriate HTTP status codes for malformed requests, invalid input, and unknown game IDs.
+- [x] Ensure active-game responses never include the hidden word.
+- [x] Keep the server authoritative; do not accept a client-supplied answer or game outcome.
+- [x] Document request and response shapes in the README.
 
 ### Completion Criteria
 

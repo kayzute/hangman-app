@@ -1,8 +1,8 @@
 # Hangman Game Engine
 
-This checkout implements the standalone Python game engine from the project
-specification. The game and word manager have no Flask, browser, or terminal
-interface dependencies.
+This project is a browser-based Hangman game. Its Python game engine remains
+independent of Flask and the browser; Flask exposes the engine through a JSON
+REST API, and the browser client communicates with that API.
 
 ## Use
 
@@ -27,5 +27,25 @@ Words are selected randomly from `words/easy.txt`, `words/medium.txt`, or
 ## Verify
 
 ```bash
+python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 ```
+
+## Run the server
+
+```bash
+python server.py
+```
+
+The server listens at `http://127.0.0.1:5000`. The browser game is served at
+`/` once the browser client is implemented.
+
+## REST API
+
+- `POST /api/games` with `{"difficulty":"medium"}` creates a game.
+- `GET /api/games/{game_id}` returns its current state.
+- `POST /api/games/{game_id}/guess` with `{"letter":"e"}` submits a guess.
+
+Responses include the masked `pattern`, guessed and incorrect letters,
+remaining guesses, and status. The answer is included only after the game ends.
+Invalid requests return a JSON `error` and an appropriate 4xx status code.
