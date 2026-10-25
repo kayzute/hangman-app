@@ -1,0 +1,10 @@
+cat
+book
+happy
+garden
+window
+planet
+friend
+summer
+orange
+school
