@@ -100,9 +100,9 @@ The primary play flow and expected error cases work end to end, automated tests 
 - [x] Add the production Gunicorn startup command and dependency configuration.
 - [x] Configure the service to install dependencies and serve the Flask app and static assets.
 - [x] Keep secrets and environment-specific settings out of source control; no secrets are needed for this app.
-- [ ] Deploy the application and confirm the public URL serves the browser client.
-- [ ] Verify game creation, guessing, win/loss behavior, and API error responses against the deployed service.
-- [ ] Document deployment configuration, launch steps, and the public URL in the README.
+- [x] Deploy the application and record its public URL: https://hangman-app-vnbd.onrender.com/ (URL provided by the project owner).
+- [ ] Independently verify game creation, guessing, win/loss behavior, and API error responses against the deployed service (pending network/DNS access from this environment).
+- [x] Document deployment configuration, launch steps, and the public URL in the README.
 
 ### Completion Criteria
 

@@ -4,6 +4,10 @@ This project is a browser-based Hangman game. Its Python game engine remains
 independent of Flask and the browser; Flask exposes the engine through a JSON
 REST API, and the browser client communicates with that API.
 
+## Live Game
+
+Play the deployed game at [https://hangman-app-vnbd.onrender.com/](https://hangman-app-vnbd.onrender.com/).
+
 ## Use
 
 ```python
@@ -60,14 +64,27 @@ Invalid requests return a JSON `error` and an appropriate 4xx status code.
 
 ## Deploy to Render
 
-The repository includes a Render Blueprint in `render.yaml` and pins the
-service to Python 3.13 through `.python-version`. To create the web service:
+This is a Flask web service that serves both the browser client and REST API;
+deploy it as a **Web Service**, not as a Static Site. The repository includes a
+Render Blueprint in `render.yaml` and pins the service to Python 3.13 through
+`.python-version`. To create or recreate the service:
 
-1. Connect the `kayzute/hangman-app` GitHub repository to Render.
-2. Create a Blueprint instance from the repository's `main` branch.
-3. Apply the Blueprint named `hangman-app-web`.
+1. In Render, choose **New → Blueprint** and connect
+   `kayzute/hangman-app`, using the `main` branch.
+2. Keep the Blueprint file at the repository root (`render.yaml`). No root
+   directory override or environment variables are needed.
+3. Review and apply the `hangman-app-web` service. The Blueprint configures:
+   - Runtime: Python
+   - Build command: `pip install -r requirements.txt`
+   - Start command: `gunicorn --bind 0.0.0.0:$PORT --workers 1 server:app`
+   - Health check path: `/`
+   - Plan: Render Free
 
-Render installs `requirements.txt` and starts the app with Gunicorn. The
-Blueprint uses one worker because active games are stored in process memory;
-restarts and redeploys clear active games. Pushes to the linked `main` branch
-can then trigger new deploys.
+The deployed game URL is
+[https://hangman-app-vnbd.onrender.com/](https://hangman-app-vnbd.onrender.com/).
+The same origin serves the browser interface and `/api/games` endpoints, so no
+separate static-site deployment or cross-origin configuration is required.
+
+The Blueprint uses one worker because active games are stored in process
+memory; restarts and redeploys clear active games. Pushes to the linked `main`
+branch trigger new deploys.
